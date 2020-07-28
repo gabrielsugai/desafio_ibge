@@ -9,7 +9,7 @@ class Names
         @ranking = ranking
     end
 
-    def self.ranking_uf(code)
+    def self.ranking(code)
         result = []
         response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=#{code}")
         json = JSON.parse(response.body, symbolize_names: true)
@@ -20,7 +20,7 @@ class Names
         result
     end
 
-    def self.female_ranking_uf(code)
+    def self.female_ranking(code)
         result = []
         response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=#{code}&sexo=F")
         json = JSON.parse(response.body, symbolize_names: true)
@@ -31,7 +31,7 @@ class Names
         result
     end
 
-    def self.male_ranking_uf(code)
+    def self.male_ranking(code)
         result = []
         response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=#{code}&sexo=M")
         json = JSON.parse(response.body, symbolize_names: true)
