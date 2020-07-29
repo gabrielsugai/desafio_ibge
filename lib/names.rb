@@ -1,4 +1,3 @@
-#https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=35&sexo=F
 require 'faraday'
 require 'json'
 class Names
