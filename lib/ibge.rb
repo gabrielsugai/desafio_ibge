@@ -1,4 +1,5 @@
 require_relative 'frequency'
+require_relative 'partials/menu'
 require 'json'
 
-Frequency.of_name('gabriel')
+Partials::Menu.new.show_menu
