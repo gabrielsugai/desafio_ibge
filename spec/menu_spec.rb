@@ -117,5 +117,78 @@ describe Partials::Menu do
             ====================================================
         MESSAGE
     end
+
+    it 'Should generate tables with the ranks when chose the second option' do
+        uf = '3529401'
+        expect { Partials::Menu.new.first_option(uf) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+            ==========================Ranking Geral==========================
+            Rank  Nome     Frequencia
+            1 - MARIA -     22221
+            2 - JOSE -     11827
+            3 - ANA -     5118
+            4 - JOAO -     5111
+            5 - ANTONIO -     4623
+            6 - LUCAS -     2844
+            7 - CARLOS -     2824
+            8 - PAULO -     2796
+            9 - MARCOS -     2642
+            10 - FRANCISCO -     2561
+            11 - GABRIEL -     2507
+            12 - PEDRO -     2363
+            13 - RAFAEL -     2147
+            14 - LUIZ -     2102
+            15 - FELIPE -     1929
+            16 - BRUNO -     1898
+            17 - GUSTAVO -     1885
+            18 - MARCELO -     1837
+            19 - RODRIGO -     1745
+            20 - GUILHERME -     1724
+            ==========================Ranking Feminino==========================
+            Rank  Nome     Frequencia
+            1 - MARIA -     22136
+            2 - ANA -     5101
+            3 - ALINE -     1588
+            4 - ADRIANA -     1487
+            5 - MARCIA -     1433
+            6 - JULIANA -     1402
+            7 - FERNANDA -     1391
+            8 - JESSICA -     1387
+            9 - PATRICIA -     1382
+            10 - SANDRA -     1355
+            11 - BRUNA -     1305
+            12 - VANESSA -     1301
+            13 - JULIA -     1289
+            14 - CAMILA -     1262
+            15 - LETICIA -     1256
+            16 - AMANDA -     1240
+            17 - BEATRIZ -     1231
+            18 - APARECIDA -     1105
+            19 - GABRIELA -     1039
+            20 - FRANCISCA -     1029
+            ==========================Ranking Masculino==========================
+            Rank  Nome     Frequencia
+            1 - JOSE -     11783
+            2 - JOAO -     5087
+            3 - ANTONIO -     4613
+            4 - CARLOS -     2812
+            5 - LUCAS -     2802
+            6 - PAULO -     2779
+            7 - MARCOS -     2629
+            8 - FRANCISCO -     2556
+            9 - GABRIEL -     2476
+            10 - PEDRO -     2350
+            11 - RAFAEL -     2129
+            12 - LUIZ -     2092
+            13 - FELIPE -     1901
+            14 - BRUNO -     1880
+            15 - GUSTAVO -     1870
+            16 - MARCELO -     1834
+            17 - RODRIGO -     1736
+            18 - GUILHERME -     1713
+            19 - EDUARDO -     1681
+            20 - DANIEL -     1647
+            ====================================================
+        MESSAGE
+    end
 end
 

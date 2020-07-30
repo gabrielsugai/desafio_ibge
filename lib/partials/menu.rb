@@ -31,5 +31,18 @@ module Partials
             Table.create_ranking(male_ranking)
             puts("====================================================")
         end
+
+        def second_option(mu)
+            ranking = Names.ranking(mu)
+            female_ranking = Names.female_ranking(mu)
+            male_ranking = Names.male_ranking(mu)
+            puts("==========================Ranking Geral==========================")
+            Table.create_ranking(ranking)
+            puts("==========================Ranking Feminino==========================")
+            Table.create_ranking(female_ranking)
+            puts("==========================Ranking Masculino==========================")
+            Table.create_ranking(male_ranking)
+            puts("====================================================")
+        end
     end
 end
