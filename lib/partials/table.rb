@@ -4,9 +4,11 @@ module Partials
     class Table
 
         def self.create_ranking(names)
-            puts("Rank  Nome     Frequencia")
+            puts("Rank        Nome        Frequencia")
             names.each do |name|
-                puts("#{name.ranking} - #{name.name} -     #{name.frequency}")
+                ranking_spaces = Partials::Table.new.space_count(name.ranking.to_s)
+                name_spaces = Partials::Table.new.space_count(name.name)
+                puts("#{name.ranking}#{ranking_spaces}#{name.name}#{name_spaces}#{name.frequency}")
             end
         end
 
