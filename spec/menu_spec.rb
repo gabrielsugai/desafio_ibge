@@ -4,7 +4,7 @@ require './lib/partials/menu'
 describe Partials::Menu do
 
     it 'Should show a menu for users' do
-        expect { Partials::Menu.new.show_menu }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+        expect { Partials::Menu.show }.to output(<<-MESSAGE.strip_heredoc).to_stdout
             Digite 1 para verificar o ranking de nomes de uma UF.
             Digite 2 para verificar o ranking de nomes de um MU.
             Digite 3 para verificar a frequencia de um nome ao decorer dos anos.
@@ -13,7 +13,7 @@ describe Partials::Menu do
     end
 
     it 'Should show all UFs when user chose the first option' do
-        expect { Partials::Menu.new.show_ufs }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+        expect { Partials::Menu.show_ufs }.to output(<<-MESSAGE.strip_heredoc).to_stdout
             11 - Rondônia (RO)
             12 - Acre (AC)
             13 - Amazonas (AM)
@@ -47,7 +47,7 @@ describe Partials::Menu do
 
     it 'Should generate tables with the ranks when chose the first option' do
         uf = '35'
-        expect { Partials::Menu.new.first_option(uf) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+        expect { Partials::Menu.first_option(uf) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
             ==========================Ranking Geral==========================
             Rank  Nome     Frequencia
             1 - MARIA -     2143232
@@ -120,7 +120,7 @@ describe Partials::Menu do
 
     it 'Should generate tables with the ranks when chose the second option' do
         uf = '3529401'
-        expect { Partials::Menu.new.first_option(uf) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+        expect { Partials::Menu.first_option(uf) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
             ==========================Ranking Geral==========================
             Rank  Nome     Frequencia
             1 - MARIA -     22221
@@ -193,7 +193,7 @@ describe Partials::Menu do
 
     it 'Should show the frequency of names when user chose the third option' do
         names = ['gabriel', 'joao']
-        expect { Partials::Menu.new.third_option(names) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+        expect { Partials::Menu.third_option(names) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
             | Periodo     gabriel   joao |
                 1930[      1267  60155
              [1930,1940[   2744  141772

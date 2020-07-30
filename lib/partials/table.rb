@@ -1,4 +1,4 @@
-require 'names'
+require './lib/names'
 
 module Partials
     class Table
