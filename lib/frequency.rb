@@ -4,10 +4,6 @@ require 'json'
 class Frequency
     attr_accessor :name
 
-    def initialize(name)
-        @name = name
-    end
-
     def self.of_name(names)
         aux = ''
         if names.length == 1
