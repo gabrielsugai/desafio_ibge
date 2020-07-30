@@ -1,10 +1,17 @@
 require 'faraday'
 require 'json'
+require_relative 'partials/table'
 
 class Frequency
     attr_accessor :name
 
     def self.of_name(names)
+        prepared_names = Frequency.new.prepare_names(names)
+        period, frequency = Frequency.new.request_response(prepared_names)
+        Partials::Table.create_frequency(names, period, frequency)
+    end
+
+    def prepare_names(names)
         aux = ''
         if names.length == 1
             aux = names.first
@@ -13,11 +20,20 @@ class Frequency
                 aux += "#{name}%7C"
             end
         end
+        aux
+    end
+
+    def api_request(names)
+            response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/#{names}")
+            json = JSON.parse(response.body, symbolize_names: true)
+    end
+
+    def request_response(names)
+        json = api_request(names)
         name_list = []
         period = []
         frequency = []
-        response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/#{aux}")
-        json = JSON.parse(response.body, symbolize_names: true)
+        
         json.each do |name_frequency|
             name_list << name_frequency[:res]
         end
@@ -31,26 +47,6 @@ class Frequency
             end
             frequency << aux_list
         end
-        table_head = "| Periodo   "
-        names.each do |name|
-            aux = "  #{name} "
-            table_head += aux
-        end
-        table_head += "|"
-        puts(table_head)
-
-        period.each do |decade|
-            if decade.length == 5
-                message = "    #{decade}    "
-            else
-                message = " #{decade} "
-            end
-            frequency.each do |amount|
-                aux = "  #{amount.first}"
-                message += aux
-                amount.shift
-            end
-            puts(message)
-        end
+        return period, frequency
     end
 end
