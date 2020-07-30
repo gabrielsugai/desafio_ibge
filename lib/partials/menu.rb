@@ -1,6 +1,7 @@
 require 'locales'
 require 'names'
 require_relative 'table'
+require 'frequency'
 
 module Partials
     class Menu
@@ -43,6 +44,10 @@ module Partials
             puts("==========================Ranking Masculino==========================")
             Table.create_ranking(male_ranking)
             puts("====================================================")
+        end
+
+        def third_option(names)
+            Frequency.of_name(names)
         end
     end
 end
