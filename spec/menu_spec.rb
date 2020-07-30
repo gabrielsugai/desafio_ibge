@@ -120,8 +120,8 @@ describe Partials::Menu do
     end
 
     it 'Should generate tables with the ranks when chose the second option' do
-        uf = '3529401'
-        expect { Partials::Menu.first_option(uf) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+        mu = '3529401'
+        expect { Partials::Menu.second_option(mu) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
             ==========================Ranking Geral==========================
             Rank        Nome        Frequencia
             1           MARIA       22221
@@ -215,6 +215,16 @@ describe Partials::Menu do
             [2000,2010[ 584024      794118      
             ------------------------------------
         MESSAGE
+    end
+
+    it 'Should return a parameterized name' do
+        name = ['João']
+        expect(Partials::Menu.parameterize(name)).to include('Joao')
+    end
+
+    it 'Should return another parameterized name' do
+        name = ['José maria']
+        expect(Partials::Menu.parameterize(name)).to include('Josemaria')
     end
 
 end

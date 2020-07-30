@@ -20,6 +20,7 @@ while option != '4' do
         puts("maria,jose")
         names = gets.chomp
         names = names.split(',')
+        names = Partials::Menu.parameterize(names)
         Partials::Menu.third_option(names)
     when '4'
         puts("Obrigado por utilizar o nosso sistema, até a proxima...")
