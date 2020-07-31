@@ -16,7 +16,7 @@ module Partials
         def self.show_ufs
             ufs = Locales.all
             ufs.each do |uf|
-                puts("#{uf.code} - #{uf.name} (#{uf.initials})")
+                puts("#{uf[0]} - #{uf[1]} (#{uf[2].upcase})")
             end
             puts("Digite o codigo de uma UF para verificar os nomes mais utilizados nessa região.")
         end
