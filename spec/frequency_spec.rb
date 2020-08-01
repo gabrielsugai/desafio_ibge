@@ -51,6 +51,11 @@ describe Frequency do
             ------------------------------------
         MESSAGE
     end
+
+    it 'Should return a message when name not found' do
+        names = ['blablabla']
+        expect { Frequency.of_name(names) }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+            Infelizmente esse nome não possui dados suficientes, favor informar outro.
+        MESSAGE
+    end
 end
-
-

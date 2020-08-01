@@ -25,7 +25,12 @@ class Cities
         mu,uf = name.split(',')
         db = SQLite3::Database.open 'db/database.db'
         result = db.execute "SELECT code FROM MU WHERE title='#{mu.downcase}' AND uf='#{uf.downcase}'"
-        result.flatten.first
+        if result.length < 1
+            puts('Cidade não encontrada, favor verificar se o nome está correto.')
+            return 0
+        else
+            result.flatten.first
+        end
     end
 
 end

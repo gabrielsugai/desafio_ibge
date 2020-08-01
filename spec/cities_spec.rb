@@ -12,4 +12,10 @@ describe Cities do
 		mu_code = Cities.search_mu('Mauá,SP')
 		expect(mu_code).to eq(3529401)
 	end
+
+	it 'Should return an error if user give an inexistent city' do
+		expect { Cities.search_mu('Blablabla,SP') }.to output(<<-MESSAGE.strip_heredoc).to_stdout
+            Cidade não encontrada, favor verificar se o nome está correto.
+        MESSAGE
+	end
 end
