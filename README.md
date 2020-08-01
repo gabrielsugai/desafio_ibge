@@ -20,7 +20,7 @@
 
 ## Descrição do projeto 
 
-<p allign="justify">Baseado na aplicação do IBGE <a href="https://censo2010.ibge.gov.br/nomes/#/search/response/235)">Nomes do Brasil</a> esse projeto traz um ranking interativo dos nomes mais utilizados no Brasil. Permitindo a busca dos nomes mais populares em todas as regiões do país. Essa aplicação também permite que você busque um ou mais nomes, para verificar a frequência dele no país no decorrer dos anos, sempre gerando tabelas organizadas para uma boa leitura.</p>
+<p allign="justify">Baseado na aplicação do IBGE <a href="https://censo2010.ibge.gov.br/nomes/#/search/response/235)">Nomes do Brasil</a> esse projeto traz um ranking interativo dos nomes mais utilizados no Brasil, permitindo a busca dos nomes mais populares em todas as regiões do país. Essa aplicação também permite que você busque um ou mais nomes, para verificar a frequência dele no país no decorrer dos anos, sempre gerando tabelas organizadas para uma boa leitura.</p>
 
 ## Principais Gems utilizadas
 
