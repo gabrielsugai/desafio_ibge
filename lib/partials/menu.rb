@@ -14,11 +14,12 @@ module Partials
         end
 
         def self.show_ufs
-            ufs = Locales.all
+            ufs = Locales.list_uf
             ufs.each do |uf|
-                puts("#{uf.code} - #{uf.name} (#{uf.initials})")
+                puts("#{uf[0]} - #{uf[1]} (#{uf[2].upcase})")
             end
-            puts("Digite o codigo de uma UF para verificar os nomes mais utilizados nessa região.")
+            puts("Digite a sigla da UF desejada para verificar o ranking da região.")
+            puts("Exemplo: SP")
         end
 
         def self.first_option(uf)

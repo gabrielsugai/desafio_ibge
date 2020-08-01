@@ -1,4 +1,6 @@
 require_relative 'partials/menu'
+require_relative 'cities'
+require_relative 'locales'
 
 option = 0
 
@@ -9,11 +11,14 @@ while option != '4' do
     when '1'
         Partials::Menu.show_ufs
         uf = gets.chomp
+        uf_code = Locales.search_uf(uf)
         Partials::Menu.first_option(uf)
     when '2'
-        puts("Digite o codigo de um MU para verificar os nomes mais utilizados nessa região.")
-        mu = gets.chomp
-        Partials::Menu.second_option(mu)
+        puts("Digite o nome de uma cidade e a sigla do estado separados por virgula para pesquisar o ranking desse municipio.")
+        puts("Exemplo: São Paulo, SP")
+        city = gets.chomp
+        mu_code = Cities.search_mu(city)
+        Partials::Menu.second_option(mu_code)
     when '3'
         puts("Digite o(s) nome(s) desejados para a consulta.")
         puts("Caso deseje consultar mais de um nome por vez, separar os nomes por virgula e sem espaços conforme o exemplo abaixo:")

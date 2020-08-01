@@ -33,7 +33,7 @@
 
 :heavy_check_mark: O usuário pode verificar o ranking de nomes mais populares em uma UF desejada, exibindo 3 tabelas: Ranking geral de nomes, ranking dos nomes femininos mais utilizados e ranking de nomes masculinos mais utilizados.
 
-:heavy_check_mark: Similar a funcionalidade anterior, o usuário pode verificar o ranking de um município a sua escolha, informando o código do município o sistema exibe 3 tabelas contendo o ranking geral de nomes, o ranking feminino e o masculino.
+:heavy_check_mark: Similar a funcionalidade anterior, o usuário pode verificar o ranking de um município a sua escolha, informando o nome do município e a sigla do UF o sistema exibe 3 tabelas contendo o ranking geral de nomes, o ranking feminino e o masculino.
 
 :heavy_check_mark: O usuário pode verificar a frequência de um ou mais nomes no decorrer das décadas, o sistema ao receber os nomes cria uma tabela onde as linhas são os períodos analisados, e as colunas são os dados referentes a cada nome informado.
 
