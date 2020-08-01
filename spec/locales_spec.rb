@@ -14,4 +14,9 @@ describe Locales do
 		expect(uf_list.last).to eq([53, 'Distrito Federal', 'df'])
 	end
 
+	it 'Should get a UF code from db' do
+		uf_code = Locales.search_uf('SP')
+		expect(uf_code).to eq(35)
+	end
+
 end

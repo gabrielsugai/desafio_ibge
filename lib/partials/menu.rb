@@ -18,7 +18,8 @@ module Partials
             ufs.each do |uf|
                 puts("#{uf[0]} - #{uf[1]} (#{uf[2].upcase})")
             end
-            puts("Digite o codigo de uma UF para verificar os nomes mais utilizados nessa região.")
+            puts("Digite a sigla da UF desejada para verificar o ranking da região.")
+            puts("Exemplo: SP")
         end
 
         def self.first_option(uf)

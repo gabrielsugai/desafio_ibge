@@ -28,4 +28,10 @@ class Locales
         db = SQLite3::Database.open 'db/database.db'
         db.execute "SELECT * FROM UF"
     end
+
+    def self.search_uf(initials)
+        db = SQLite3::Database.open 'db/database.db'
+        result = db.execute "SELECT code FROM UF WHERE initials='#{initials.downcase}'"
+        result.flatten.first
+    end
 end

@@ -42,7 +42,8 @@ describe Partials::Menu do
             51 - Mato Grosso (MT)
             52 - Goiás (GO)
             53 - Distrito Federal (DF)
-            Digite o codigo de uma UF para verificar os nomes mais utilizados nessa região.
+            Digite a sigla da UF desejada para verificar o ranking da região.
+            Exemplo: SP
         MESSAGE
     end
 
