@@ -5,3 +5,53 @@ puts '== Installing dependencies =='
 system 'gem install bundler --conservative'
 system('bundle check') || system('bundle install')
 puts '== All dependencies have been installed =='
+
+require 'sqlite3'
+require './lib/cities'
+require './lib/locales'
+
+puts "\n== Searching a database =="
+
+if File.exist?('db/database.db')
+  puts "\n== Database found: Starting the project =="
+else
+  puts "\n== Database unfound: Create Tables =="
+  
+  begin
+    uf_list = Locales.all
+    mu_list = Cities.all
+
+    db = SQLite3::Database.new 'db/database.db'
+    db.execute <<-SQL
+      CREATE TABLE UF(
+        Code int,
+        Title varchar(30),
+        Initials varchar(30)
+      );
+    SQL
+
+    db.execute <<-SQL
+      CREATE TABLE MU(
+        Code int,
+        Title varchar(30),
+        UF varchar(10)
+      );
+    SQL
+
+    
+
+    uf_list.each do |uf|
+        db.execute 'INSERT INTO UF VALUES ( ?, ?, ?)', uf
+    end
+
+    mu_list.each do |mu|
+        db.execute 'INSERT INTO MU VALUES ( ?, ?, ?)', mu
+    end
+
+    rescue SQLite3::Exception => e
+      puts e
+    ensure
+      puts "\n== We finish to preparate database :) =="
+      db.close if db
+    end
+end

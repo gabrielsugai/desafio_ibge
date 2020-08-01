@@ -14,7 +14,7 @@ module Partials
         end
 
         def self.show_ufs
-            ufs = Locales.all
+            ufs = Locales.list_uf
             ufs.each do |uf|
                 puts("#{uf[0]} - #{uf[1]} (#{uf[2].upcase})")
             end
