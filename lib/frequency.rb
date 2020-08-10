@@ -1,6 +1,7 @@
 require 'faraday'
 require 'json'
 require_relative 'partials/table'
+require_relative 'partials/requests'
 
 class Frequency
     attr_accessor :name
@@ -27,13 +28,8 @@ class Frequency
         aux
     end
 
-    def api_request(names)
-            response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/#{names}")
-            json = JSON.parse(response.body, symbolize_names: true)
-    end
-
     def request_response(names)
-        json = api_request(names)
+        json = Requests.frequency(names)
         name_list = []
         period = []
         frequency = []
