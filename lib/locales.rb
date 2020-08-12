@@ -1,6 +1,7 @@
 require 'faraday'
 require 'json'
 require 'sqlite3'
+require_relative 'partials/requests'
 
 class Locales
     attr_accessor :code, :name, :initials
@@ -11,17 +12,10 @@ class Locales
     end
 
     def self.all
-        uf_list = []
-        result = []
-        response = Faraday.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
-        json = JSON.parse(response.body, symbolize_names: true)
-        result = json.map do |uf|
-            uf = new(uf[:id], uf[:nome], uf[:sigla])
+        json = Requests.ufs
+        json.map do |uf|
+            uf = new(uf[:id], uf[:nome], uf[:sigla].downcase)
         end
-        result.each do |uf|
-            uf_list << [uf.code, uf.name, uf.initials.downcase]
-        end
-        uf_list
     end
 
     def self.list_uf
