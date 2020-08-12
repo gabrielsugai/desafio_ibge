@@ -41,11 +41,11 @@ else
     
 
     uf_list.each do |uf|
-        db.execute 'INSERT INTO UF VALUES ( ?, ?, ?)', uf
+        db.execute 'INSERT INTO UF VALUES ( ?, ?, ?)', uf.code, uf.name,uf.initials
     end
 
     mu_list.each do |mu|
-        db.execute 'INSERT INTO MU VALUES ( ?, ?, ?)', mu
+        db.execute 'INSERT INTO MU VALUES ( ?, ?, ?)', mu.code, mu.name,mu.uf_initials
     end
 
     rescue SQLite3::Exception => e

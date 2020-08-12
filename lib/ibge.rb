@@ -15,7 +15,7 @@ while option != '4' do
         Partials::Menu.first_option(uf)
     when '2'
         puts("Digite o nome de uma cidade e a sigla do estado separados por virgula para pesquisar o ranking desse municipio.")
-        puts("Exemplo: São Paulo, SP")
+        puts("Exemplo: São Paulo,SP")
         city = gets.chomp
         if city.length == 0
             puts('Erro: Favor não enviar valores nulos.')

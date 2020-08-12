@@ -1,5 +1,6 @@
 require 'faraday'
 require 'json'
+require_relative 'partials/requests'
 class Names
     attr_accessor :name, :frequency, :ranking
     def initialize(name, frequency, ranking)
@@ -9,35 +10,24 @@ class Names
     end
 
     def self.ranking(code)
-        result = []
-        response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=#{code}")
-        json = JSON.parse(response.body, symbolize_names: true)
-        json = json.first[:res]
-        result = json.map do |name|
-            name = new(name[:nome], name[:frequencia], name[:ranking])
-        end
-        result
+        json = Requests.ranking('all', code)
+        Names.map_names(json)
     end
 
     def self.female_ranking(code)
-        result = []
-        response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=#{code}&sexo=F")
-        json = JSON.parse(response.body, symbolize_names: true)
-        json = json.first[:res]
-        result = json.map do |name|
-            name = new(name[:nome], name[:frequencia], name[:ranking])
-        end
-        result
+        json = Requests.ranking('f', code)
+        Names.map_names(json)
     end
 
     def self.male_ranking(code)
-        result = []
-        response = Faraday.get("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=#{code}&sexo=M")
-        json = JSON.parse(response.body, symbolize_names: true)
-        json = json.first[:res]
-        result = json.map do |name|
+        json = Requests.ranking('m', code)
+        Names.map_names(json)
+    end
+
+    private
+    def self.map_names(json)
+        json.map do |name|
             name = new(name[:nome], name[:frequencia], name[:ranking])
         end
-        result
     end
 end
